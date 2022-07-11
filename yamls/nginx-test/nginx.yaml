@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-test-pod
+  name: nginx-test-deploy
+  namespace: nginx-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-test-pod
+  template:
+    metadata:
+      labels:
+        app: nginx-test-pod
+    spec:
+      containers:
+      - image: nginx
+        name: nginx-test-pod
+        resources:
+          limits:
+            memory: "64Mi"
+            cpu: "10m"
